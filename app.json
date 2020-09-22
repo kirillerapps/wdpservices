@@ -4,5 +4,9 @@
   "name" : "wdpcustomerportal",
   "version" : "1.0.0",
   "release" : "61.0.0.0-146",
-  "repositories" : [ ]
+  "repositories" : [ 
+      {
+        "url" : "https://repo.maven.apache.org/maven2/"
+    }
+  ]
 }
