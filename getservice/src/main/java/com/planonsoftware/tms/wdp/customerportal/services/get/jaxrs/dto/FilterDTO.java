@@ -1,41 +1,42 @@
 package com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.dto;
 
+import java.util.Date;
+
 public class FilterDTO
 {
-    private String description;
-    private String state;
-    private String reportedById;
-    private String modifiedDateFrom;
-    private String modifiedDateTo;
+    private String notModifiedBy;
+    private String modifiedBy;
+    private Date modifiedDateFrom;
+    private Date modifiedDateTo;
 
-  public String getDescription() {
-        return description;
+
+
+    public String getNotModifiedBy() {
+        return notModifiedBy;
     }
-    public void setDescription(String description) {
-        this.description = description;
+
+    public void setNotModifiedBy(String notModifiedBy) {
+        this.notModifiedBy = notModifiedBy;
     }
-    public String getState() {
-        return state;
+
+    public String getModifiedBy() {
+        return modifiedBy;
     }
-    public void setState(String state) {
-        this.state = state;
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
     }
-    public String getReportedById() {
-        return reportedById;
-    }
-    public void setReportedById(String reportedById) {
-        this.reportedById = reportedById;
-    }
-    public String getModifiedDateFrom() {
+
+    public Date getModifiedDateFrom() {
         return modifiedDateFrom;
     }
-    public void setModifiedDateFrom(String modifiedDateFrom) {
+    public void setModifiedDateFrom(Date modifiedDateFrom) {
         this.modifiedDateFrom = modifiedDateFrom;
     }
-    public String getModifiedDateTo() {
+    public Date getModifiedDateTo() {
         return modifiedDateTo;
     }
-    public void setModifiedDateTo(String modifiedDateTo) {
+    public void setModifiedDateTo(Date modifiedDateTo) {
         this.modifiedDateTo = modifiedDateTo;
     }
 }

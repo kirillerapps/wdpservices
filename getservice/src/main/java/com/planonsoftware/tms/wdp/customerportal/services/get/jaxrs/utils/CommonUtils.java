@@ -1,6 +1,8 @@
 package com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.utils;
 
 import java.lang.reflect.UndeclaredThrowableException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.planonsoftware.platform.data.v1.ActionNotFoundException;
 import com.planonsoftware.platform.data.v1.BusinessException;
@@ -10,10 +12,10 @@ import com.planonsoftware.platform.data.v1.IError;
 import com.planonsoftware.platform.data.v1.IMessageHandler;
 import com.planonsoftware.platform.data.v1.ISystemError;
 import com.planonsoftware.platform.data.v1.IWarning;
+import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.dto.OrderDetailsDTO;
 
-public class CommonUtils
-{
-        public static String getFormattedStackTrace(Throwable e) {
+public class CommonUtils {
+    public static String getFormattedStackTrace(Throwable e) {
         String formattedStackTrace = null;
         if (e != null) {
             formattedStackTrace = "Exception: " + e;
@@ -99,8 +101,62 @@ public class CommonUtils
         return e.getMessage();
     }
 
-       public static String blankIfNull(String string) {
+    public static String blankIfNull(String string) {
         return string == null ? "" : string;
     }
+
+    public static String getFileNameFromFilePath(String filePath) {
+        if (filePath == null) {
+            return "";
+        } else {
+            return filePath.substring(filePath.lastIndexOf("/") + 1);
+        }
+
+    }
+
+    public static OrderDetailsDTO setQuestionAnswer(OrderDetailsDTO orderDetails, String value, String answerCode) {
+        switch (value) {
+        case "_WDP_01":
+            orderDetails.setAnswerCodeWhatIsTheProblemWithTheRoof(answerCode);
+            break;
+        case "_WDP_02":
+            orderDetails.setAnswerCodeWhatIsTheProblemWithTheGate(answerCode);
+            break;
+        case "_WDP_03":
+            orderDetails.setAnswerCodeWhatIsTheProblemWithFireProtection(answerCode);
+            break;
+        case "_WDP_04":
+            orderDetails.setAnswerCodeWhatIsTheProblemWithElectricity(answerCode);
+            break;
+        case "_WDP_05":
+            orderDetails.setAnswerCodeWhatIsTheProblemWithTheHVAC(answerCode);
+            break;
+        case "_WDP_06":
+            orderDetails.setAnswerCodeWhatIsTheProblemWithPlumbingSewerageOrKitchen(answerCode);
+            break;
+        case "_WDP_07":
+            orderDetails.setAnswerCodeWhatIsTheProblemAtTheOursideAreaOrFence(answerCode);
+            break;
+        case "_WDP_08":
+            orderDetails.setAnswerCodeWhatIsTheProblemWithTheWallOrWindow(answerCode);
+            break;
+        case "_WDP_09":
+            orderDetails.setAnswerCodeWhatIsTheProblemWithTheFloorOrDoor(answerCode);
+            break;
+        }
+
+        return orderDetails;
+    }
+
+    public static String returnFormatDateTimeFormatToString(Date date, String format) {
+        if (date != null) {
+            return new SimpleDateFormat(format).format(date);
+        } else {
+            return "";
+        }
+
+    }
+
+ 
 
 }

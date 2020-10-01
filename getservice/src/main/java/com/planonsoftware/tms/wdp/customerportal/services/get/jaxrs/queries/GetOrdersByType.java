@@ -10,21 +10,29 @@ public class GetOrdersByType implements IQueryDefinition
     public void create(IQueryBuilder aBuilder, IQueryDefinitionContext aContext) {
         //Search fields
         aBuilder.addSearchField("RefBODefinitionUserDefined","boType");
-        aBuilder.addSearchField("Comment","searchDescription");
         aBuilder.addSearchField("SysMutationDateTime","searchMutationDateFrom");
         aBuilder.addSearchField("SysMutationDateTime","searchMutationDateTo");
+        aBuilder.addSelectField("SysMutationDateTime","sysMutationDateTimeSelect");
+
+        //Modified and not modified searchfields
+        IJoin modifiedByInnerjoin = aBuilder.addInnerJoin("SysChangeAccountRef");
+        modifiedByInnerjoin.addSearchField("Accountname","modifiedByAccountName");
+
+        IJoin notModifiedByInnerjoin = aBuilder.addInnerJoin("SysChangeAccountRef");
+        notModifiedByInnerjoin.addSearchField("Accountname","notModifiedByAccountName");
 
         //Search field get request by code
-        aBuilder.addSearchField("OrderNumber", "OrderNumberSearch");
-        
-        IJoin boStatusSearch = aBuilder.addInnerJoin("RefBOStateUserDefined");
-        boStatusSearch.addSearchField("Code","statusCodeSearch");
-
-        IJoin boPersonIdSearch = aBuilder.addInnerJoin("InternalRequestorPersonRef");
-        boPersonIdSearch.addSearchField("Code","personCodeSearch");
-
+        aBuilder.addSearchField("OrderNumber", "OrderNumberSearch");        
        
         //Select fields
+        IJoin boInternalRequestorPerson = aBuilder.addLeftOuterJoin("InternalRequestorPersonRef");
+        boInternalRequestorPerson.addSelectField("Code","reportedByCode");
+        boInternalRequestorPerson.addSelectField("FirstName","reportedByFirstName");
+        boInternalRequestorPerson.addSelectField("LastName","reportedByLastName");
+        boInternalRequestorPerson.addSelectField("Email","reportedByEmail");
+        boInternalRequestorPerson.addLeftOuterJoin("AddressRef").addSelectField("Code","reportedByAdressCode");
+
+
         IJoin boStatus = aBuilder.addLeftOuterJoin("RefBOStateUserDefined");        
 		boStatus.addSelectField("Name", "statusSystemName");
         boStatus.addSelectField("Code", "statusCode");        

@@ -7,22 +7,22 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 
 @JsonPropertyOrder({
-        "standardOrderId", "description", "propertyId", "reportedById", "uploadAttachmentYN", "contactName",
+        "id","standardOrderId", "description", "propertyId", "reportedBy", "uploadAttachmentYN", "contactName",
         "contactPhone", "highPriority", "explanationPriority", "descriptionCause", "whereIsTheProblem",
-        "appointmentBooking", "requestId", "reportedOn", "requestedCompleteOn", "state", "rentableUnit",
+        "appointmentBooking", "reportedOn","modifiedOn", "requestedCompleteOn", "state", "rentableUnit",
         "internalCoordinator"
 })
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderOverViewDTO
 {   
+    @JsonProperty("id")
+    private String id;
     @JsonProperty("standardOrderId")
     private String standardOrderId;
     @JsonProperty("description")
     private String description;
     @JsonProperty("propertyId")
     private String propertyId;
-    @JsonProperty("reportedById")
-    private String reportedById;
     @JsonProperty("uploadAttachmentYN")
     private String uploadAttachmentYN;
     @JsonProperty("contactName")
@@ -38,11 +38,11 @@ public class OrderOverViewDTO
     @JsonProperty("whereIsTheProblem")
     private String whereIsTheProblem;
     @JsonProperty("appointmentBooking")
-    private Boolean appointmentBooking;
-    @JsonProperty("requestId")
-    private String requestId;
+    private Boolean appointmentBooking; 
     @JsonProperty("reportedOn")
     private String reportedOn;
+    @JsonProperty("modifiedOn")
+    private String modifiedOn;    
     @JsonProperty("requestedCompleteOn")
     private String requestedCompleteOn;
     @JsonProperty("state")
@@ -51,6 +51,19 @@ public class OrderOverViewDTO
     private RentableUnit rentableUnit= new RentableUnit();
     @JsonProperty("internalCoordinator")
     private InternalCoordinator internalCoordinator = new InternalCoordinator();
+
+        @JsonProperty("reportedBy")
+    private ReportedByDTO reportedBy = new ReportedByDTO();
+
+    @JsonProperty("reportedBy")
+    public ReportedByDTO getReportedBy() {
+        return reportedBy;
+    }
+
+    @JsonProperty("reportedBy")
+    public void setReportedBy(ReportedByDTO reportedBy) {
+        this.reportedBy = reportedBy;
+    }
 
     @JsonProperty("standardOrderId")
     public String getStandardOrderId() {
@@ -81,17 +94,7 @@ public class OrderOverViewDTO
     public void setPropertyId(String propertyId) {
         this.propertyId = propertyId;
     }
-
-    @JsonProperty("reportedById")
-    public String getReportedById() {
-        return reportedById;
-    }
-
-    @JsonProperty("reportedById")
-    public void setReportedById(String reportedById) {
-        this.reportedById = reportedById;
-    }
-
+    
     @JsonProperty("uploadAttachmentYN")
     public String getUploadAttachmentYN() {
         return uploadAttachmentYN;
@@ -172,14 +175,14 @@ public class OrderOverViewDTO
         this.appointmentBooking = appointmentBooking;
     }
 
-    @JsonProperty("requestId")
-    public String getRequestId() {
-        return requestId;
+    @JsonProperty("id")
+    public String getId() {
+        return id;
     }
 
-    @JsonProperty("requestId")
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
+    @JsonProperty("id")
+    public void setId(String id) {
+        this.id = id;
     }
 
     @JsonProperty("reportedOn")
@@ -190,6 +193,17 @@ public class OrderOverViewDTO
     @JsonProperty("reportedOn")
     public void setReportedOn(String reportedOn) {
         this.reportedOn = reportedOn;
+    }
+
+
+    @JsonProperty("modifiedOn")
+    public String getmodifiedOn() {
+        return modifiedOn;
+    }
+
+    @JsonProperty("modifiedOn")
+    public void setmodifiedOn(String modifiedOn) {
+        this.modifiedOn = modifiedOn;
     }
 
     @JsonProperty("requestedCompleteOn")
