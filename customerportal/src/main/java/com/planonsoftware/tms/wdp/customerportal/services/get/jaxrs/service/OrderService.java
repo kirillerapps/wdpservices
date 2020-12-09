@@ -24,6 +24,7 @@ import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.dto.WorkOrde
 import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.dto.WorkOrdersDTO.WoOrderGroup;
 import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.dto.WorkOrdersDTO.WoState;
 import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.utils.CommonUtils;
+import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.utils.Constants;
 
 public class OrderService {
 
@@ -143,12 +144,12 @@ public class OrderService {
             subOrder.setPoNumber(CommonUtils.blankIfNull(resultsetNew.getString("poNumberCode")));
             subOrder.setPropertyId(CommonUtils.blankIfNull(resultsetNew.getString("propCode")));
             subOrder.setRequestedCompleteOn(CommonUtils.returnFormatDateTimeFormatToString(
-                    resultsetNew.getDateTime("orderRequestedUserEndDateTime"), "yyyy-MM-dd'T'HH:mm:ss"));
+                    resultsetNew.getDateTime("orderRequestedUserEndDateTime"), Constants.dateTimeFormat));
             subOrder.setReportedOn(CommonUtils.returnFormatDateTimeFormatToString(
-                    resultsetNew.getDateTime("orderInsertDateTime"), "yyyy-MM-dd'T'HH:mm:ss"));
+                    resultsetNew.getDateTime("orderInsertDateTime"), Constants.dateTimeFormat));
 
             subOrder.setmodifiedOn(CommonUtils.returnFormatDateTimeFormatToString(
-                    resultsetNew.getDateTime("sysMutationDateTimeSelect"), "yyyy-MM-dd'T'HH:mm:ss"));
+                    resultsetNew.getDateTime("sysMutationDateTimeSelect"), Constants.dateTimeFormat));
 
             subOrder.setRequestId(CommonUtils.blankIfNull(resultsetNew.getString("parentOrderNumberSelect")));
 
@@ -202,6 +203,10 @@ public class OrderService {
             throws Exception {
         orderOverViewDTO.setStandardOrderId(CommonUtils.blankIfNull(resultsetNew.getString("StandardOrderRefCode")));
         orderOverViewDTO.setDescription(CommonUtils.blankIfNull(resultsetNew.getString("orderComment")));
+        orderOverViewDTO.setcommunicationOwner(CommonUtils.blankIfNull(resultsetNew.getString("communicationOwner")));
+         orderOverViewDTO.setcommunicationReader(CommonUtils.blankIfNull(resultsetNew.getString("communicationReader")));
+
+
         orderOverViewDTO.setPropertyId(CommonUtils.blankIfNull(resultsetNew.getString("propCode")));
         orderOverViewDTO.setUploadAttachmentYN(CommonUtils.blankIfNull(resultsetNew.getString("orderFreeString10")));
         orderOverViewDTO.setContactName(CommonUtils.blankIfNull(resultsetNew.getString("orderFreeString19")));
@@ -213,12 +218,12 @@ public class OrderService {
         orderOverViewDTO.setAppointmentBooking(resultsetNew.getBoolean("orderAppointmentBooking"));
         orderOverViewDTO.setId(CommonUtils.blankIfNull(resultsetNew.getString("OrderNumber")));
         orderOverViewDTO.setReportedOn(CommonUtils.returnFormatDateTimeFormatToString(
-                resultsetNew.getDateTime("orderInsertDateTime"), "yyyy-MM-dd'T'HH:mm:ss"));
+                resultsetNew.getDateTime("orderInsertDateTime"), Constants.dateTimeFormat));
         orderOverViewDTO.setRequestedCompleteOn(CommonUtils.returnFormatDateTimeFormatToString(
-                resultsetNew.getDateTime("orderRequestedUserEndDateTime"), "yyyy-MM-dd'T'HH:mm:ss"));
+                resultsetNew.getDateTime("orderRequestedUserEndDateTime"), Constants.dateTimeFormat));
 
         orderOverViewDTO.setmodifiedOn(CommonUtils.returnFormatDateTimeFormatToString(
-                resultsetNew.getDateTime("sysMutationDateTimeSelect"), "yyyy-MM-dd'T'HH:mm:ss"));
+                resultsetNew.getDateTime("sysMutationDateTimeSelect"), Constants.dateTimeFormat));
 
         // Set state
         State state = orderOverViewDTO.getState();

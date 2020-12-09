@@ -52,6 +52,34 @@ public class OrderOverViewDTO
     @JsonProperty("internalCoordinator")
     private InternalCoordinator internalCoordinator = new InternalCoordinator();
 
+
+        @JsonProperty("communicationReader")
+    private String communicationReader;
+        @JsonProperty("communicationOwner")
+    private String communicationOwner;
+
+
+    @JsonProperty("communicationOwner")
+    public String getcommunicationOwner() {
+        return communicationOwner;
+    }
+
+    @JsonProperty("communicationOwner")
+    public void setcommunicationOwner(String communicationOwner) {
+        this.communicationOwner = communicationOwner;
+    }
+    
+    @JsonProperty("communicationReader")
+    public String getcommunicationReader() {
+        return communicationReader;
+    }
+
+    @JsonProperty("communicationReader")
+    public void setcommunicationReader(String communicationReader) {
+        this.communicationReader = communicationReader;
+    }
+
+
         @JsonProperty("reportedBy")
     private ReportedByDTO reportedBy = new ReportedByDTO();
 

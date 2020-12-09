@@ -150,7 +150,8 @@ public class CommonUtils {
 
     public static String returnFormatDateTimeFormatToString(Date date, String format) {
         if (date != null) {
-            return new SimpleDateFormat(format).format(date);
+            //return new SimpleDateFormat(format).format(date);
+            return date.toInstant().toString();
         } else {
             return "";
         }

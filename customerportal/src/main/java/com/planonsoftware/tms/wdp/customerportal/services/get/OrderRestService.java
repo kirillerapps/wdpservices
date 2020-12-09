@@ -31,7 +31,7 @@ import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.utils.Common
 
 import javax.ws.rs.core.MediaType;
 
-@Path("")
+@Path("/v1.0.0")
 public class OrderRestService implements IResource {
     @Context
     IJaxRsResourceContext jaxrsContext;

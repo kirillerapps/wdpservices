@@ -63,13 +63,14 @@ public class GetSubOrders implements IQueryDefinition
         IJoin inventoryItem = aBuilder.addLeftOuterJoin("InventoryItemRef");
         inventoryItem.addSelectField("Code", "invItemCode");  
         inventoryItem.addSelectField("Name", "invItemName");
-
      
         //Select fields
-        aBuilder.addSelectField("Comment", "orderComment");
+        aBuilder.addSelectField("Description", "orderComment");
+        aBuilder.addSelectField("Comment", "communicationReader");
+        aBuilder.addSelectField("CommentString", "communicationOwner");
         aBuilder.addSelectField("RequestedUserEndDateTime", "orderRequestedUserEndDateTime");
         aBuilder.addSelectField("OrderNumber", "orderNumber");
-         aBuilder.addSelectField("InsertDateTime", "orderInsertDateTime");       
+        aBuilder.addSelectField("InsertDateTime", "orderInsertDateTime");       
         
     }
    

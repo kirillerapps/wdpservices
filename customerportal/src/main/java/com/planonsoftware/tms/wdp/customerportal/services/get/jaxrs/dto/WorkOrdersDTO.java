@@ -16,13 +16,14 @@ public class WorkOrdersDTO {
      @JsonProperty("reportedOn")
     private String reportedOn;
     @JsonProperty("modifiedOn")
-    private String modifiedOn;    
-
-
+    private String modifiedOn;   
     @JsonProperty("propertyId")
     private String propertyId;
     @JsonProperty("description")
     private String description;
+
+
+
     @JsonProperty("poNumber")
     private String poNumber;
 
@@ -54,6 +55,8 @@ public class WorkOrdersDTO {
         this.reportedBy = reportedBy;
     }
 
+
+    
     @JsonProperty("requestId")
     public String getRequestId() {
         return requestId;
@@ -63,6 +66,7 @@ public class WorkOrdersDTO {
     public void setRequestId(String requestId) {
         this.requestId = requestId;
     }
+
 
     @JsonProperty("id")
     public String getId() {

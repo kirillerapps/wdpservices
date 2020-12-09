@@ -14,6 +14,7 @@ import com.planonsoftware.platform.data.v1.Operator;
 import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.dto.ComlogDTO;
 import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.dto.FilterDTO;
 import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.utils.CommonUtils;
+import com.planonsoftware.tms.wdp.customerportal.services.get.jaxrs.utils.Constants;
 
 public class ComlogService {
 
@@ -52,9 +53,9 @@ public class ComlogService {
             communicationLog.setId(CommonUtils.blankIfNull(resultset.getString("comlogCode")));
             communicationLog.setRequestId(CommonUtils.blankIfNull(resultset.getString("OrderNumber")));
             communicationLog.setReportedOn(CommonUtils.returnFormatDateTimeFormatToString(
-                    resultset.getDateTime("comlogSysInsertDateTime"), "yyyy-MM-dd'T'HH:mm:ss"));
+                    resultset.getDateTime("comlogSysInsertDateTime"), Constants.dateTimeFormat));
             communicationLog.setModifiedOn(CommonUtils.returnFormatDateTimeFormatToString(
-                    resultset.getDateTime("comlogSysChangeDateTime"), "yyyy-MM-dd'T'HH:mm:ss"));
+                    resultset.getDateTime("comlogSysChangeDateTime"), Constants.dateTimeFormat));
             communicationLog
                     .setFileName(CommonUtils.getFileNameFromFilePath(resultset.getString("comlogDocumentReferral")));
 

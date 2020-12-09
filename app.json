@@ -3,10 +3,8 @@
   "partnerIdentifier" : "planonsoftware.tmsglobal",
   "name" : "wdpcustomerportalparttwo",
   "version" : "1.0.0",
-  "release" : "61.0.0.0-146",
-  "repositories" : [ 
-      {
-        "url" : "https://repo.maven.apache.org/maven2/"
-    }
-  ]
+  "release" : "62.0.0.5-1",
+  "repositories" : [ {
+    "url" : "https://repo.maven.apache.org/maven2/"
+  } ]
 }

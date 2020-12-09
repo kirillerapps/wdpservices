@@ -54,7 +54,9 @@ public class GetOrdersByType implements IQueryDefinition
         boStandardOrder.addSelectField("Code","StandardOrderRefCode");
 
         aBuilder.addSelectField("Syscode"); 
-        aBuilder.addSelectField("Comment", "orderComment");
+        aBuilder.addSelectField("Description", "orderComment");
+        aBuilder.addSelectField("Comment", "communicationReader");
+        aBuilder.addSelectField("CommentString", "communicationOwner");        
         aBuilder.addSelectField("FreeString10", "orderFreeString10");
         aBuilder.addSelectField("FreeString19", "orderFreeString19");
         aBuilder.addSelectField("FreeString3", "orderFreeString3");
